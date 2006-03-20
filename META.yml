@@ -1,0 +1,15 @@
+---
+name: DateTime-Format-RSS
+version: 0.01
+author: ~
+abstract: Format DateTime For RSS
+license: perl
+requires:
+  DateTime::Format::DateParse: 0
+  DateTime::Format::ISO8601: 0
+  DateTime::Format::Mail: 0
+provides:
+  DateTime::Format::RSS:
+    file: lib/DateTime/Format/RSS.pm
+    version: 0.01
+generated_by: Module::Build version 0.2611
