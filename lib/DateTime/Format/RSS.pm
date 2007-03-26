@@ -1,4 +1,4 @@
-# $Id$
+# $Id: RSS.pm 14 2007-03-26 12:02:58Z daisuke $
 #
 # Copyright (c) 2006 Daisuke Maki <dmaki@cpan.org>
 # All rights reserved.
@@ -12,7 +12,7 @@ use DateTime::Format::DateParse;
 
 BEGIN
 {
-    $VERSION = '0.01';
+    $VERSION = '0.02';
 }
 
 sub new
@@ -102,5 +102,10 @@ L<DateTime::Format::DateParse|DateTime::Format::DateParse>
 
 Copyright (c) 2006 Daisuke Maki E<lt>gdmaki@cpan.orgE<gt>, Tatsuhiko Miyagawa <miyagawa@bulknews.netE<gt>
 All rights reserved.
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 =cut
