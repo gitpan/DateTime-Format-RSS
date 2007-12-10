@@ -16,5 +16,5 @@ MANIFEST			This list of files
 META.yml
 t/01-sanity.t
 t/02-dateparse.t
-t/99-pod-coverage.t
-t/99-pod.t
+t/99_pod-coverage.t
+t/99_pod.t

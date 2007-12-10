@@ -1,10 +1,11 @@
-# $Id: RSS.pm 14 2007-03-26 12:02:58Z daisuke $
+# $Id: /mirror/perl/DateTime-Format-RSS/trunk/lib/DateTime/Format/RSS.pm 31679 2007-12-10T09:54:29.495530Z daisuke  $
 #
 # Copyright (c) 2006 Daisuke Maki <dmaki@cpan.org>
 # All rights reserved.
 
 package DateTime::Format::RSS;
 use strict;
+use warnings;
 use vars qw($VERSION);
 use DateTime::Format::Mail;
 use DateTime::Format::ISO8601;
@@ -12,7 +13,7 @@ use DateTime::Format::DateParse;
 
 BEGIN
 {
-    $VERSION = '0.02';
+    $VERSION = '0.02001';
 }
 
 sub new
@@ -100,8 +101,8 @@ L<DateTime::Format::DateParse|DateTime::Format::DateParse>
 
 =head1 AUTHORS
 
-Copyright (c) 2006 Daisuke Maki E<lt>gdmaki@cpan.orgE<gt>, Tatsuhiko Miyagawa <miyagawa@bulknews.netE<gt>
-All rights reserved.
+Copyright (c) 2006 Daisuke Maki E<lt>daisuke@endeworks.jpE<gt> All rights reserved.
+Tatsuhiko Miyagawa <miyagawa@bulknews.netE<gt> All rights reserved.
 
 =head1 LICENSE
 
