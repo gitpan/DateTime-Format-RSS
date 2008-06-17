@@ -1,4 +1,4 @@
-# $Id: /mirror/perl/DateTime-Format-RSS/trunk/lib/DateTime/Format/RSS.pm 31679 2007-12-10T09:54:29.495530Z daisuke  $
+# $Id: /mirror/perl/DateTime-Format-RSS/trunk/lib/DateTime/Format/RSS.pm 63379 2008-06-17T20:51:20.618065Z daisuke  $
 #
 # Copyright (c) 2006 Daisuke Maki <dmaki@cpan.org>
 # All rights reserved.
@@ -10,27 +10,31 @@ use vars qw($VERSION);
 use DateTime::Format::Mail;
 use DateTime::Format::ISO8601;
 use DateTime::Format::DateParse;
+use base qw(Class::Accessor::Fast);
+
+__PACKAGE__->mk_accessors($_) for qw(parsers version);
 
 BEGIN
 {
-    $VERSION = '0.02001';
+    $VERSION = '0.03000';
 }
 
 sub new
 {
     my $class = shift;
-    my $self  = bless {
-        _parsers => [
+    my %args  = @_;
+    my $self  = $class->SUPER::new({
+        version => $args{version} || '1.0',
+        parsers => [
             # order matters
             DateTime::Format::Mail->new,
             DateTime::Format::ISO8601->new,
             'DateTime::Format::DateParse',
         ]
-    }, $class;
+    });
     return $self;
 }
 
-sub _parsers { my $self = shift; @{$self->{_parsers}} }
 sub parse_datetime
 {
     my $self = shift;
@@ -40,7 +44,7 @@ sub parse_datetime
     }
 
     my $dt;
-    foreach my $p ($self->_parsers) {
+    foreach my $p (@{$self->parsers}) {
         $dt = eval { $p->parse_datetime($date) };
         last if $dt;
     }
@@ -50,7 +54,11 @@ sub parse_datetime
 sub format_datetime
 {
     my $self = shift;
-    DateTime::Format::ISO8601->parse_datetime(shift);
+    if ($self->version eq '2.0') {
+        return $self->parsers->[0]->format_datetime($_[0]);
+    } else {
+        return $_[0]->iso8601;
+    }
 }
 
 1;
@@ -67,6 +75,8 @@ DateTime::Format::RSS - Format DateTime For RSS
   my $fmt = DateTime::Format::RSS->new;
   my $dt  = $fmt->parse_datetime($str);
   my $str = $fmt->format_datetime($dt);
+
+  my $fmt = DateTime::Format::RSS->new(version => 2.0);
 
 =head1 DESCRIPTION
 

@@ -129,6 +129,7 @@ Tue, 15 Nov 1994 0:18:38 -0800
 
 my @data = split(/\s*\n/, $data);
 
+my $fmt = DateTime::Format::RSS->new();
 foreach my $date (@data) {
-    ok(DateTime::Format::RSS->parse_datetime($date), "parse $date");
+    ok($fmt->parse_datetime($date), "parse $date");
 }
